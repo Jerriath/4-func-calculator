@@ -21,6 +21,19 @@
     top: 30px;
 }
 
+#output {
+    font-size: 25px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+#aValue {
+    position: absolute;
+    font-size: 10px;
+    bottom: 25px;
+    margin-left: 5px;
+}
+
 .leftSide {
     position: relative;
     top: 105px;
@@ -83,7 +96,13 @@
 }
 
 #enter {
-    height: 80px;
+    height: 85px;
+}
+
+#c {
+    background-color: #df2030;
+    color: white;
+    padding-left: 2px;
 }
 
 body {
@@ -100,4 +119,12 @@ h2 {
     margin-left: 10px;
     text-align: left;
     margin-right: 10px;
+}
+
+button:hover {
+    border: 5px solid black;
+}
+
+button:focus {
+    border: 5px solid orange;
 }

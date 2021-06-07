@@ -7,21 +7,65 @@
     margin-bottom: auto;
     border: 1px solid black;
     height: 400px;
-    width: 300px;
+    width: 280px;
     background-color: #0060ff;
+}
+
+#display {
+    position: absolute;
+    width: 240px;
+    background-color: #b9b9b9;
+    height: 50px;
+    border: 1px solid black;
+    margin-left: 20px;
+    top: 30px;
+}
+
+.leftSide {
+    position: relative;
+    top: 105px;
+    border: 1px solid #b9b9b9;
+    width: 170px;
+    height: 270px;
+    margin-left: 20px;
+    display: inline-block;
+}
+
+.lFunctions {
+    height: 40px;
+    width: 50px;
+    margin-top: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #df2030;
+    color: white;
+    font-size: 15px;
+    text-align: left;
+}
+
+.digits {
+    height: 40px;
+    width: 50px;
+    margin-top: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+    color: #0060ff;
+    font-size: 15px;
+    text-align: left;
 }
 
 .rightSide {
     position: relative;
     float: right;
-    top: 115px;
+    top: 105px;
     border: 1px solid #b9b9b9;
     width: 50px;
     height: 270px;
     margin-right: 20px;
 }
 
-.functions {
+.rFunctions {
     display: flex;
     flex-direction: column;
     height: 40px;
@@ -40,11 +84,18 @@
     height: 80px;
 }
 
-b {
-    position: relative;
-    left: 5px;
-}
-
 body {
     font-family: monospace;
+}
+
+h1 {
+    position: fixed;
+    font-size: 15px;
+    margin-left: 20px;
+}
+
+h2 {
+    margin-left: 10px;
+    text-align: left;
+    margin-right: 10px;
 }

@@ -53,7 +53,8 @@
     color: #0060ff;
     font-size: 15px;
     text-align: left;
-}
+    font-weight: bold;
+}   
 
 .rightSide {
     position: relative;
@@ -78,6 +79,7 @@
     color: white;
     font-size: 25px;
     text-align: left;
+    font-weight: bold;
 }
 
 #enter {

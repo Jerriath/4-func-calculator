@@ -4,6 +4,8 @@ let displayValue = null;
 let answer = null;
 let memory = null;
 let operation = null;
+let display = document.querySelector("#output");
+let aDisplay = document.querySelector("#aValue");
 
 //Basic 4 functions of calculator
 function add(a, b) {
@@ -22,16 +24,20 @@ function divide(a, b) {
     return a / b; //This function will need some tweeking later (too many decimals)
 }
 
+
+
 //Adding event listeners to four function buttons
 const fourFunctions = document.querySelector("#fourFunctions");
 const fourNodes = fourFunctions.childNodes;
 const fourLength = fourNodes.length;
 for (let i = 0; i < fourLength/2 - 2; i++) {
-    console.log(fourNodes[i*2 + 1]);
     fourNodes[i*2 + 1].addEventListener("click", function(e) {
         operation = e.target.id;
-        updateA(displayValue); //Passes previous displayValue to the aValue
-        clear(); //Clears the displayValue for a new value (b)
+        if (aValue == null)
+        {
+            updateA(displayValue); //Passes previous displayValue to the aValue
+            clear(); //Clears the displayValue for a new value (b)
+        }
     });
 }
 
@@ -57,10 +63,32 @@ enter.addEventListener("click", () => {
         answer = operate(a, b, add);
     }
     updateA(answer);
+    
     clear();
 });
 
+//Function to negate the current number in display
+const negate = document.querySelector("#signChange");
+negate.addEventListener("click", () => {
+    displayValue *= -1;
+    display.textContent = displayValue;
+});
 
+//Function to sqrt the answer (if it exists) or the displayValue
+const sqrt = document.querySelector("#sqrt");
+sqrt.addEventListener("click", () => {
+    if (answer)
+    {
+        aValue = Math.sqrt(answer);
+        updateA(aValue);
+    }
+    else if (displayValue);
+    {
+        displayValue = Math.sqrt(displayValue);
+        updateA(displayValue);
+        clear();
+    }
+});
 
 //Function to actually calculate something
 function operate(a, b, func) {
@@ -72,6 +100,7 @@ const digitDiv = document.querySelector("#digitDiv");
 const childrenNodes = digitDiv.childNodes;
 const listLength = childrenNodes.length;
 for (let i = 1; i < listLength/2; i++) {
+    console.log(childrenNodes[i*2 - 1]);
     childrenNodes[i*2 - 1].addEventListener("click", function(e) {
         if (e.target.id == "c") {
             clear()
@@ -86,21 +115,19 @@ for (let i = 1; i < listLength/2; i++) {
 
 //Function to input number values into the display
 function enterValue(value) {
-    let display = document.querySelector("#output");
     display.textContent = display.textContent + value;
     displayValue = display.textContent;
 }
 
 //Updates the aValue display
 function updateA(value) {
-    let aDisplay = document.querySelector("#aValue");
     aDisplay.textContent = value;
     aValue = value;
+    answer = aValue
 }
 
 //Function to clear the display
 function clear() {
-    let display = document.querySelector("#output");
     display.textContent = "";
     if (displayValue == null) //Clears everything if there is no displayValue (ac)
     {

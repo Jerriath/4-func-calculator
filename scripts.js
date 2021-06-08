@@ -9,7 +9,7 @@ let aDisplay = document.querySelector("#aValue");
 
 //Basic 4 functions of calculator
 function add(a, b) {
-    return parseInt(a) + parseInt(b);
+    return parseFloat(a) + parseFloat(b);
 }
 
 function subtract(a, b) {
@@ -87,6 +87,67 @@ sqrt.addEventListener("click", () => {
         displayValue = Math.sqrt(displayValue);
         updateA(displayValue);
         clear();
+    }
+});
+
+//Function to remember value in display and store it in MRC (twice to clear memory)
+const mrc = document.querySelector("#mrc");
+mrc.addEventListener("click", () => {
+    if (displayValue == memory)
+    {
+        memory = null;
+    }
+    else
+    {
+        displayValue = memory;
+        display.textContent = displayValue;
+    }
+});
+
+//Function to remember value in display (or aValue if none in display) and store it into MRC
+const mPlus = document.querySelector("#mPlus");
+mPlus.addEventListener("click", () => {
+    if (aValue && !displayValue)
+    {
+        if (memory == aValue)
+        {
+            memory = null;
+        }
+        else
+        {
+        memory = aValue;
+        }
+    }
+    else if (displayValue)
+    {
+        if (memory == displayValue)
+        {
+            memory == null;
+        }
+        else
+        {
+            memory = displayValue;
+        }
+    }
+});
+
+//Function to remove value in memory (similar to double clickling mrc)
+const mMinus = document.querySelector("#mMinus");
+mMinus.addEventListener("click", () => {
+    memory = null;
+});
+
+//Function to make value in display a percentage (gives functionaity to percent button)
+const percent = document.querySelector("#percent");
+percent.addEventListener("click", () => {
+    if (operation == "add" || operation == "minus")
+    {
+        displayValue = displayValue * 0.01;
+        displayValue = displayValue * aValue;
+    }
+    else if (operation == "multiply" || operation == "divide")
+    {
+        displayValue = displayValue * 0.01;
     }
 });
 
